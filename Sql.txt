@@ -1,0 +1,1694 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| collegedb          |
+| information_schema |
+| mock_inter         |
+| mysql              |
+| mysqldb            |
+| mysqldbs           |
+| performance_schema |
+| sakila             |
+| stud1              |
+| student_db         |
+| student_db_n       |
+| sys                |
+| world              |
++--------------------+
+13 rows in set (0.00 sec)
+
+mysql> use mysqldbs;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_mysqldbs |
++--------------------+
+| bonus              |
+| employee           |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from bonus;
++------+-------+------------+
+| eid  | bouns | date       |
++------+-------+------------+
+|  100 |  2000 | 10/03/2023 |
+|  100 |  5000 | 15/02/2023 |
+|  102 |  1000 | 01/03/2023 |
+|  106 |  3000 | 12/03/2023 |
+|  104 |  1500 | 14/03/2023 |
++------+-------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select eid,ename from employee;
++------+-----------+
+| eid  | ename     |
++------+-----------+
+|  100 | Raj kiran |
+|  101 | Aman      |
+|  103 | Divya     |
+|  104 | Santosh   |
+|  105 | Baba      |
+|  106 | Deepak    |
+|  107 | Mantoo    |
++------+-----------+
+7 rows in set (0.00 sec)
+
+mysql> select ename from employee where salary>=10000;
++-----------+
+| ename     |
++-----------+
+| Raj kiran |
+| Aman      |
+| Divya     |
+| Santosh   |
+| Deepak    |
+| Mantoo    |
++-----------+
+6 rows in set (0.00 sec)
+
+mysql> select ename,salary from employee where salary>=10000;
++-----------+--------+
+| ename     | salary |
++-----------+--------+
+| Raj kiran |  25000 |
+| Aman      |  15000 |
+| Divya     |  30000 |
+| Santosh   |  10000 |
+| Deepak    |  20000 |
+| Mantoo    |  10000 |
++-----------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select ename,salary from employee where salary in(5000,2000);
++-------+--------+
+| ename | salary |
++-------+--------+
+| Baba  |   5000 |
++-------+--------+
+1 row in set (0.00 sec)
+
+mysql> select ename,salary from employee where ename in('divya','mantoo');
++--------+--------+
+| ename  | salary |
++--------+--------+
+| Divya  |  30000 |
+| Mantoo |  10000 |
++--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select ename,salary from employee where ename in("divya","mantoo");
++--------+--------+
+| ename  | salary |
++--------+--------+
+| Divya  |  30000 |
+| Mantoo |  10000 |
++--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select ename,salary from employee where ename in("Divya","Mantoo");
++--------+--------+
+| ename  | salary |
++--------+--------+
+| Divya  |  30000 |
+| Mantoo |  10000 |
++--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emmployee;
+ERROR 1146 (42S02): Table 'mysqldbs.emmployee' doesn't exist
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employee order by ename desc;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employee order by salary asc;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employee order by ename asc;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employee having eid=107;
++------+--------+-----------+--------+------------+
+| eid  | ename  | city      | salary | DOB        |
++------+--------+-----------+--------+------------+
+|  107 | Mantoo | Bangalore |  10000 | 21/03/2023 |
++------+--------+-----------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee having salary=15000;
++------+-------+-------+--------+------------+
+| eid  | ename | city  | salary | DOB        |
++------+-------+-------+--------+------------+
+|  101 | Aman  | Delhi |  15000 | 21/03/2023 |
++------+-------+-------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> select salary from employee having salary=15000;
++--------+
+| salary |
++--------+
+|  15000 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select salary from employee having salary=15000;
++--------+
+| salary |
++--------+
+|  15000 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select MAX(salary) from employee;
++-------------+
+| MAX(salary) |
++-------------+
+|       30000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select MIN(salary) from employee;
++-------------+
+| MIN(salary) |
++-------------+
+|        5000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select AVG(salary) from employee;
++-------------+
+| AVG(salary) |
++-------------+
+|  16428.5714 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select SUM(salary) from employee;
++-------------+
+| SUM(salary) |
++-------------+
+|      115000 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select count(eid) from employee;
++------------+
+| count(eid) |
++------------+
+|          7 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> select count(eid) from employee order by city;
++------------+
+| count(eid) |
++------------+
+|          7 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select count(eid) from employee group by city;
++------------+
+| count(eid) |
++------------+
+|          1 |
+|          1 |
+|          2 |
+|          1 |
+|          1 |
+|          1 |
++------------+
+6 rows in set (0.01 sec)
+
+mysql> select count(eid) from employee group by city order by count(eid);
++------------+
+| count(eid) |
++------------+
+|          1 |
+|          1 |
+|          1 |
+|          1 |
+|          1 |
+|          2 |
++------------+
+6 rows in set (0.00 sec)
+
+mysql> select count(DOB) from employee group by DOB;
++------------+
+| count(DOB) |
++------------+
+|          7 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select count(city) from employee group by city order by city asc;
++-------------+
+| count(city) |
++-------------+
+|           2 |
+|           1 |
+|           1 |
+|           1 |
+|           1 |
+|           1 |
++-------------+
+6 rows in set (0.00 sec)
+
+mysql> select count(city) from employee group by city order by count(city) asc;
++-------------+
+| count(city) |
++-------------+
+|           1 |
+|           1 |
+|           1 |
+|           1 |
+|           1 |
+|           2 |
++-------------+
+6 rows in set (0.00 sec)
+
+mysql> select count(salary) from employee group by salary;
++---------------+
+| count(salary) |
++---------------+
+|             1 |
+|             1 |
+|             1 |
+|             2 |
+|             1 |
+|             1 |
++---------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select count(city) from employee group by city having city="bangalore";
++-------------+
+| count(city) |
++-------------+
+|           2 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select city from employee having city="Bangalore";
++-----------+
+| city      |
++-----------+
+| Bangalore |
+| Bangalore |
++-----------+
+2 rows in set (0.00 sec)
+
+mysql> select count(city) from employee group by city having city="Bangalore";
++-------------+
+| count(city) |
++-------------+
+|           2 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select Ucase(ename) from employee;
++--------------+
+| Ucase(ename) |
++--------------+
+| RAJ KIRAN    |
+| AMAN         |
+| DIVYA        |
+| SANTOSH      |
+| BABA         |
+| DEEPAK       |
+| MANTOO       |
++--------------+
+7 rows in set (0.01 sec)
+
+mysql> select LCASE(ename) from employee;
++--------------+
+| LCASE(ename) |
++--------------+
+| raj kiran    |
+| aman         |
+| divya        |
+| santosh      |
+| baba         |
+| deepak       |
+| mantoo       |
++--------------+
+7 rows in set (0.01 sec)
+
+mysql>
+mysql> select length("my name is");
++----------------------+
+| length("my name is") |
++----------------------+
+|                   10 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select length("my name is")as length;
++--------+
+| length |
++--------+
+|     10 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee order by eid asc limit 2;
++------+-----------+----------+--------+------------+
+| eid  | ename     | city     | salary | DOB        |
++------+-----------+----------+--------+------------+
+|  100 | Raj kiran | Mirzapur |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi    |  15000 | 21/03/2023 |
++------+-----------+----------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee order by eid desc limit 1;
++------+--------+-----------+--------+------------+
+| eid  | ename  | city      | salary | DOB        |
++------+--------+-----------+--------+------------+
+|  107 | Mantoo | Bangalore |  10000 | 21/03/2023 |
++------+--------+-----------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> select mid(city,1,3) from employee;
++---------------+
+| mid(city,1,3) |
++---------------+
+| Mir           |
+| Del           |
+| Ban           |
+| Che           |
+| Ram           |
+| Pun           |
+| Ban           |
++---------------+
+7 rows in set (0.00 sec)
+
+mysql> select substring(city,2,3) from employee;
++---------------------+
+| substring(city,2,3) |
++---------------------+
+| irz                 |
+| elh                 |
+| ang                 |
+| hen                 |
+| am                  |
+| une                 |
+| ang                 |
++---------------------+
+7 rows in set (0.00 sec)
+
+mysql> select mid(city,2,3) from employee;
++---------------+
+| mid(city,2,3) |
++---------------+
+| irz           |
+| elh           |
+| ang           |
+| hen           |
+| am            |
+| une           |
+| ang           |
++---------------+
+7 rows in set (0.00 sec)
+
+mysql> select mid(city,2,length(city)) from employee;
++--------------------------+
+| mid(city,2,length(city)) |
++--------------------------+
+| irzapur                  |
+| elhi                     |
+| angalore                 |
+| hennai                   |
+| am Nagar                 |
+| une                      |
+| angalore                 |
++--------------------------+
+7 rows in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2023-03-22 12:13:42 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now()as time;
++---------------------+
+| time                |
++---------------------+
+| 2023-03-22 12:13:51 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2023-03-22 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 12:16:34  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select current_date;
++--------------+
+| current_date |
++--------------+
+| 2023-03-22   |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select current_time;
++--------------+
+| current_time |
++--------------+
+| 12:17:47     |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select current_timestamp;
++---------------------+
+| current_timestamp   |
++---------------------+
+| 2023-03-22 12:18:08 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2023-03-22 12:18:20 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select dayname(curdate());
++--------------------+
+| dayname(curdate()) |
++--------------------+
+| Wednesday          |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select ename as Name from employee;
++-----------+
+| Name      |
++-----------+
+| Raj kiran |
+| Aman      |
+| Divya     |
+| Santosh   |
+| Baba      |
+| Deepak    |
+| Mantoo    |
++-----------+
+7 rows in set (0.00 sec)
+
+mysql> select ename as Name from employee where ename like "-%";
+Empty set (0.01 sec)
+
+mysql> select ename as Name from employee where ename like "b%";
++------+
+| Name |
++------+
+| Baba |
++------+
+1 row in set (0.00 sec)
+
+
+mysql> select ename as Name from employee where ename like"a%";
++------+
+| Name |
++------+
+| Aman |
++------+
+1 row in set (0.00 sec)
+
+mysql> select ename as Name from employee where ename like"_m%";
++------+
+| Name |
++------+
+| Aman |
++------+
+1 row in set (0.00 sec)
+
+mysql> select ename as Name from employee where ename like"___";
+Empty set (0.00 sec)
+
+mysql> select ename as Name from employee where ename like"____";
++------+
+| Name |
++------+
+| Aman |
+| Baba |
++------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employee where ename like"%a";
++------+-------+-----------+--------+------------+
+| eid  | ename | city      | salary | DOB        |
++------+-------+-----------+--------+------------+
+|  103 | Divya | Bangalore |  30000 | 21/03/2023 |
+|  105 | Baba  | Ram Nagar |   5000 | 21/03/2023 |
++------+-------+-----------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee where ename like"d%";
++------+--------+-----------+--------+------------+
+| eid  | ename  | city      | salary | DOB        |
++------+--------+-----------+--------+------------+
+|  103 | Divya  | Bangalore |  30000 | 21/03/2023 |
+|  106 | Deepak | Pune      |  20000 | 21/03/2023 |
++------+--------+-----------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee where ename like"%a%";
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employee where ename like"_a%";
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee where ename like"s%";
++------+---------+---------+--------+------------+
+| eid  | ename   | city    | salary | DOB        |
++------+---------+---------+--------+------------+
+|  104 | Santosh | Chennai |  10000 | 21/03/2023 |
++------+---------+---------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee where ename like"___m";
+Empty set (0.00 sec)
+
+mysql> select * from employee where ename like"___a";
++------+-------+-----------+--------+------------+
+| eid  | ename | city      | salary | DOB        |
++------+-------+-----------+--------+------------+
+|  105 | Baba  | Ram Nagar |   5000 | 21/03/2023 |
++------+-------+-----------+--------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> delete from employee where eid=106;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  105 | Baba      | Ram Nagar |   5000 | 21/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> delete from employee where eid in(105,107);
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
++------+-----------+-----------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> insert into employee values(106,'Deepak','Pune',20000,'22/03/2023');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(106,'Mantoo','Bangalore',10000,'22/03/2023');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  106 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update employee set eid=107 where ename='Mantoo';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select distinct city from employee;
++-----------+
+| city      |
++-----------+
+| Mirzapur  |
+| Delhi     |
+| Bangalore |
+| Chennai   |
+| Pune      |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> insert into employee values(105,'Baba','Hyderabad',5000,'22/03/2023');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select distinct city from employee;
++-----------+
+| city      |
++-----------+
+| Mirzapur  |
+| Delhi     |
+| Bangalore |
+| Chennai   |
+| Pune      |
+| Hyderabad |
++-----------+
+6 rows in set (0.00 sec)
+
+mysql> select concat(ename,"-",salary) from employee;
++--------------------------+
+| concat(ename,"-",salary) |
++--------------------------+
+| Raj kiran-25000          |
+| Aman-15000               |
+| Divya-30000              |
+| Santosh-10000            |
+| Deepak-20000             |
+| Mantoo-10000             |
+| Baba-5000                |
++--------------------------+
+7 rows in set (0.01 sec)
+
+mysql> select concat(ename,"-",salary)as NameSalary from employee;
++-----------------+
+| NameSalary      |
++-----------------+
+| Raj kiran-25000 |
+| Aman-15000      |
+| Divya-30000     |
+| Santosh-10000   |
+| Deepak-20000    |
+| Mantoo-10000    |
+| Baba-5000       |
++-----------------+
+7 rows in set (0.00 sec)
+
+mysql> select rtrim(ename) from employee;
++--------------+
+| rtrim(ename) |
++--------------+
+| Raj kiran    |
+| Aman         |
+| Divya        |
+| Santosh      |
+| Deepak       |
+| Mantoo       |
+| Baba         |
++--------------+
+7 rows in set (0.00 sec)
+
+mysql> select  ltrim(ename) from employee where ename like"% %";
++--------------+
+| ltrim(ename) |
++--------------+
+| Raj kiran    |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select replace("ename"," ","") from employee;
++-------------------------+
+| replace("ename"," ","") |
++-------------------------+
+| ename                   |
+| ename                   |
+| ename                   |
+| ename                   |
+| ename                   |
+| ename                   |
+| ename                   |
++-------------------------+
+7 rows in set (0.00 sec)
+
+mysql> select replace("select ename from employee"," ","") from employee;
++----------------------------------------------+
+| replace("select ename from employee"," ","") |
++----------------------------------------------+
+| selectenamefromemployee                      |
+| selectenamefromemployee                      |
+| selectenamefromemployee                      |
+| selectenamefromemployee                      |
+| selectenamefromemployee                      |
+| selectenamefromemployee                      |
+| selectenamefromemployee                      |
++----------------------------------------------+
+7 rows in set (0.00 sec)
+
+mysql> select replace("(select ename from employee)"," ","") from employee;
++------------------------------------------------+
+| replace("(select ename from employee)"," ","") |
++------------------------------------------------+
+| (selectenamefromemployee)                      |
+| (selectenamefromemployee)                      |
+| (selectenamefromemployee)                      |
+| (selectenamefromemployee)                      |
+| (selectenamefromemployee)                      |
+| (selectenamefromemployee)                      |
+| (selectenamefromemployee)                      |
++------------------------------------------------+
+7 rows in set (0.00 sec)
+
+mysql> select replace("select ename from employee"," ","");
++----------------------------------------------+
+| replace("select ename from employee"," ","") |
++----------------------------------------------+
+| selectenamefromemployee                      |
++----------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select replace("(select ename from employee)as name"," ","");
++-------------------------------------------------------+
+| replace("(select ename from employee)as name"," ","") |
++-------------------------------------------------------+
+| (selectenamefromemployee)asname                       |
++-------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select concat(ename,salary) from employee order by concat(ename,salary) desc;
++----------------------+
+| concat(ename,salary) |
++----------------------+
+| Santosh10000         |
+| Raj kiran25000       |
+| Mantoo10000          |
+| Divya30000           |
+| Deepak20000          |
+| Baba5000             |
+| Aman15000            |
++----------------------+
+7 rows in set (0.00 sec)
+
+mysql> select concat(salary,ename) from employee order by concat(salary,ename);
++----------------------+
+| concat(salary,ename) |
++----------------------+
+| 10000Mantoo          |
+| 10000Santosh         |
+| 15000Aman            |
+| 20000Deepak          |
+| 25000Raj kiran       |
+| 30000Divya           |
+| 5000Baba             |
++----------------------+
+7 rows in set (0.00 sec)
+
+mysql> select concat(ename,salary) from employee order by concat(salary) desc;
++----------------------+
+| concat(ename,salary) |
++----------------------+
+| Baba5000             |
+| Divya30000           |
+| Raj kiran25000       |
+| Deepak20000          |
+| Aman15000            |
+| Santosh10000         |
+| Mantoo10000          |
++----------------------+
+7 rows in set (0.00 sec)
+
+mysql> select concat(ename,salary) from employee order by salary desc;
++----------------------+
+| concat(ename,salary) |
++----------------------+
+| Divya30000           |
+| Raj kiran25000       |
+| Deepak20000          |
+| Aman15000            |
+| Santosh10000         |
+| Mantoo10000          |
+| Baba5000             |
++----------------------+
+7 rows in set (0.00 sec)
+
+mysql> select concat(ename,"-",salary) from employee order by salary desc;
++--------------------------+
+| concat(ename,"-",salary) |
++--------------------------+
+| Divya-30000              |
+| Raj kiran-25000          |
+| Deepak-20000             |
+| Aman-15000               |
+| Santosh-10000            |
+| Mantoo-10000             |
+| Baba-5000                |
++--------------------------+
+7 rows in set (0.00 sec)
+
+mysql> select concat(ename,"-",salary) from employee order by ename desc;
++--------------------------+
+| concat(ename,"-",salary) |
++--------------------------+
+| Santosh-10000            |
+| Raj kiran-25000          |
+| Mantoo-10000             |
+| Divya-30000              |
+| Deepak-20000             |
+| Baba-5000                |
+| Aman-15000               |
++--------------------------+
+7 rows in set (0.00 sec)
+
+mysql> select length(ename) from employee;
++---------------+
+| length(ename) |
++---------------+
+|             9 |
+|             4 |
+|             5 |
+|             7 |
+|             6 |
+|             6 |
+|             4 |
++---------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> update employee set salary=salary+50;
+Query OK, 7 rows affected (0.01 sec)
+Rows matched: 7  Changed: 7  Warnings: 0
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25050 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15050 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30050 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10050 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20050 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10050 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5050 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> update employee set salary=salary-50;
+Query OK, 7 rows affected (0.01 sec)
+Rows matched: 7  Changed: 7  Warnings: 0
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select max(salary) from employee where salary<(select MAX(salary) from employee);
++-------------+
+| max(salary) |
++-------------+
+|       25000 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> create table status(eid int,m_status varchar(32),gender varchar(32));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> describe status;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| eid      | int         | YES  |     | NULL    |       |
+| m_status | varchar(32) | YES  |     | NULL    |       |
+| gender   | varchar(32) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> describe status;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| eid      | int         | YES  |     | NULL    |       |
+| m_status | varchar(32) | YES  |     | NULL    |       |
+| gender   | varchar(32) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into status values(100,'NO','M');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into status values(103,'Yes','F');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into status values(105,'Yes','M');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into status values(106,'NO','M');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> describe employee;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| eid    | int         | YES  |     | NULL    |       |
+| ename  | varchar(32) | YES  |     | NULL    |       |
+| city   | varchar(32) | YES  |     | NULL    |       |
+| salary | int         | YES  |     | NULL    |       |
+| DOB    | varchar(32) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into employee values(102,'Pooja','JK',13000,'22/03/2023');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |
+|  102 | Pooja     | JK        |  13000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from status;
++------+----------+--------+
+| eid  | m_status | gender |
++------+----------+--------+
+|  100 | NO       | M      |
+|  103 | Yes      | F      |
+|  105 | Yes      | M      |
+|  106 | NO       | M      |
++------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> insert into status values(102,'NO','F');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from status;
++------+----------+--------+
+| eid  | m_status | gender |
++------+----------+--------+
+|  100 | NO       | M      |
+|  103 | Yes      | F      |
+|  105 | Yes      | M      |
+|  106 | NO       | M      |
+|  102 | NO       | F      |
++------+----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select ename from employee where eid in(select eid from status where m_status='NO');
++-----------+
+| ename     |
++-----------+
+| Raj kiran |
+| Deepak    |
+| Pooja     |
++-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee where eid in (select eid from status where m_status='NO');
++------+-----------+----------+--------+------------+
+| eid  | ename     | city     | salary | DOB        |
++------+-----------+----------+--------+------------+
+|  100 | Raj kiran | Mirzapur |  25000 | 21/03/2023 |
+|  106 | Deepak    | Pune     |  20000 | 22/03/2023 |
+|  102 | Pooja     | JK       |  13000 | 22/03/2023 |
++------+-----------+----------+--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |
+|  102 | Pooja     | JK        |  13000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from status;
++------+----------+--------+
+| eid  | m_status | gender |
++------+----------+--------+
+|  100 | NO       | M      |
+|  103 | Yes      | F      |
+|  105 | Yes      | M      |
+|  106 | NO       | M      |
+|  102 | NO       | F      |
++------+----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select ename,salary from employee where eid in(select eid from status where gender='F');
++-------+--------+
+| ename | salary |
++-------+--------+
+| Divya |  30000 |
+| Pooja |  13000 |
++-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_mysqldbs |
++--------------------+
+| bonus              |
+| employee           |
+| status             |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select ename from employee where eid in(select eid from bonus where salary>=5000);
++-----------+
+| ename     |
++-----------+
+| Raj kiran |
+| Santosh   |
+| Deepak    |
+| Pooja     |
++-----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from bonus;
++------+-------+------------+
+| eid  | bouns | date       |
++------+-------+------------+
+|  100 |  2000 | 10/03/2023 |
+|  100 |  5000 | 15/02/2023 |
+|  102 |  1000 | 01/03/2023 |
+|  106 |  3000 | 12/03/2023 |
+|  104 |  1500 | 14/03/2023 |
++------+-------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select eid from bonus;
++------+
+| eid  |
++------+
+|  100 |
+|  100 |
+|  102 |
+|  106 |
+|  104 |
++------+
+5 rows in set (0.00 sec)
+
+mysql> select * from bonus;
++------+-------+------------+
+| eid  | bouns | date       |
++------+-------+------------+
+|  100 |  2000 | 10/03/2023 |
+|  100 |  5000 | 15/02/2023 |
+|  102 |  1000 | 01/03/2023 |
+|  106 |  3000 | 12/03/2023 |
+|  104 |  1500 | 14/03/2023 |
++------+-------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select ename from employee where eid in(select eid from bonus where bouns >=3000);
++-----------+
+| ename     |
++-----------+
+| Raj kiran |
+| Deepak    |
++-----------+
+2 rows in set (0.00 sec)
+
+mysql> select ename from employee where eid in(select eid from bonus where eid in(select eid from status where m_status='Yes'));
+Empty set (0.00 sec)
+
+mysql> insert into bonus values(105,4000,'22/03/2023');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select ename from employee where eid in(select eid from bonus where eid in(select eid from status where m_status='Yes'));
++-------+
+| ename |
++-------+
+| Baba  |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select m_status from status where eid in(select eid from employee where salary>10000);
++----------+
+| m_status |
++----------+
+| NO       |
+| Yes      |
+| NO       |
+| NO       |
++----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee where eid not in(select eid from bonus);
++------+--------+-----------+--------+------------+
+| eid  | ename  | city      | salary | DOB        |
++------+--------+-----------+--------+------------+
+|  101 | Aman   | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya  | Bangalore |  30000 | 21/03/2023 |
+|  107 | Mantoo | Bangalore |  10000 | 22/03/2023 |
++------+--------+-----------+--------+------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |
+|  102 | Pooja     | JK        |  13000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from bonus;
++------+-------+------------+
+| eid  | bouns | date       |
++------+-------+------------+
+|  100 |  2000 | 10/03/2023 |
+|  100 |  5000 | 15/02/2023 |
+|  102 |  1000 | 01/03/2023 |
+|  106 |  3000 | 12/03/2023 |
+|  104 |  1500 | 14/03/2023 |
+|  105 |  4000 | 22/03/2023 |
++------+-------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select date from bonus where eid in(select eid from employee where ename like"a%");
+Empty set (0.00 sec)
+
+mysql> select date from bonus where eid in(select eid from employee where ename like"%n%");
++------------+
+| date       |
++------------+
+| 10/03/2023 |
+| 15/02/2023 |
+| 14/03/2023 |
++------------+
+3 rows in set (0.00 sec)
+
+mysql> select m_status from status where eid in(select eid from employee where city="bangalore");
++----------+
+| m_status |
++----------+
+| Yes      |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select ename from employee where eid in(select eid from status where m_status="Yes" and gender="M");
++-------+
+| ename |
++-------+
+| Baba  |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |
+|  102 | Pooja     | JK        |  13000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from status;
++------+----------+--------+
+| eid  | m_status | gender |
++------+----------+--------+
+|  100 | NO       | M      |
+|  103 | Yes      | F      |
+|  105 | Yes      | M      |
+|  106 | NO       | M      |
+|  102 | NO       | F      |
++------+----------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |
+|  102 | Pooja     | JK        |  13000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+8 rows in set (0.00 sec)
+
+mysql>  select * from (select *,dense_rank() over(order by salary desc)as r
+    -> from employee)t
+    -> where r=3;
++------+--------+------+--------+------------+---+
+| eid  | ename  | city | salary | DOB        | r |
++------+--------+------+--------+------------+---+
+|  106 | Deepak | Pune |  20000 | 22/03/2023 | 3 |
++------+--------+------+--------+------------+---+
+1 row in set (0.04 sec)
+
+mysql> select *,row_number() over(order by salary desc) as rnmr,rank() over(order by salary desc) as rnk,dense_rank() over(order by salary desc) as Drank from employee;
++------+-----------+-----------+--------+------------+------+-----+-------+
+| eid  | ename     | city      | salary | DOB        | rnmr | rnk | Drank |
++------+-----------+-----------+--------+------------+------+-----+-------+
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |    1 |   1 |     1 |
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |    2 |   2 |     2 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |    3 |   3 |     3 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |    4 |   4 |     4 |
+|  102 | Pooja     | JK        |  13000 | 22/03/2023 |    5 |   5 |     5 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |    6 |   6 |     6 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |    7 |   6 |     6 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |    8 |   8 |     7 |
++------+-----------+-----------+--------+------------+------+-----+-------+
+8 rows in set (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| collegedb          |
+| information_schema |
+| mock_inter         |
+| myproject          |
+| mysql              |
+| mysqldb            |
+| mysqldbs           |
+| performance_schema |
+| sakila             |
+| stud1              |
+| student_db         |
+| student_db_n       |
+| sys                |
+| world              |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> use mysqldbs;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_mysqldbs |
++--------------------+
+| bonus              |
+| employee           |
+| registration       |
+| status             |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee;
++------+-----------+-----------+--------+------------+
+| eid  | ename     | city      | salary | DOB        |
++------+-----------+-----------+--------+------------+
+|  100 | Raj kiran | Mirzapur  |  25000 | 21/03/2023 |
+|  101 | Aman      | Delhi     |  15000 | 21/03/2023 |
+|  103 | Divya     | Bangalore |  30000 | 21/03/2023 |
+|  104 | Santosh   | Chennai   |  10000 | 21/03/2023 |
+|  106 | Deepak    | Pune      |  20000 | 22/03/2023 |
+|  107 | Mantoo    | Bangalore |  10000 | 22/03/2023 |
+|  105 | Baba      | Hyderabad |   5000 | 22/03/2023 |
+|  102 | Pooja     | JK        |  13000 | 22/03/2023 |
++------+-----------+-----------+--------+------------+
+8 rows in set (0.01 sec)
+
+mysql> select * from bonus;
++------+-------+------------+
+| eid  | bouns | date       |
++------+-------+------------+
+|  100 |  2000 | 10/03/2023 |
+|  100 |  5000 | 15/02/2023 |
+|  102 |  1000 | 01/03/2023 |
+|  106 |  3000 | 12/03/2023 |
+|  104 |  1500 | 14/03/2023 |
+|  105 |  4000 | 22/03/2023 |
++------+-------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from registration;
++------------+-----------+------------+---------------------+----------+--------+
+| first_name | last_name | DOB        | reg_time            | location | reg_id |
++------------+-----------+------------+---------------------+----------+--------+
+| ram        | shyam     | 2023-03-12 | 2023-03-23 13:05:52 | BTM      |    100 |
++------------+-----------+------------+---------------------+----------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from status;
++------+----------+--------+
+| eid  | m_status | gender |
++------+----------+--------+
+|  100 | NO       | M      |
+|  103 | Yes      | F      |
+|  105 | Yes      | M      |
+|  106 | NO       | M      |
+|  102 | NO       | F      |
++------+----------+--------+
+5 rows in set (0.01 sec)
+
+mysql> describe registration;
++------------+-------------+------+-----+-------------------+-------------------+
+| Field      | Type        | Null | Key | Default           | Extra             |
++------------+-------------+------+-----+-------------------+-------------------+
+| first_name | varchar(32) | YES  |     | NULL              |                   |
+| last_name  | varchar(32) | YES  |     | NULL              |                   |
+| DOB        | date        | YES  |     | NULL              |                   |
+| reg_time   | timestamp   | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| location   | varchar(32) | YES  |     | NULL              |                   |
+| reg_id     | int         | YES  |     | NULL              |                   |
++------------+-------------+------+-----+-------------------+-------------------+
+6 rows in set (0.01 sec)
+
+mysql> create table students(sid int not null,name varchar(32) not null,gender enum('M','F'),DOB date not null,mobile varchar(32) unique,location varchar(32),certificate SET('WEB Dev','Testing','Java Dev'));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> describe students;
++-------------+-------------------------------------+------+-----+---------+-------+
+| Field       | Type                                | Null | Key | Default | Extra |
++-------------+-------------------------------------+------+-----+---------+-------+
+| sid         | int                                 | NO   |     | NULL    |       |
+| name        | varchar(32)                         | NO   |     | NULL    |       |
+| gender      | enum('M','F')                       | YES  |     | NULL    |       |
+| DOB         | date                                | NO   |     | NULL    |       |
+| mobile      | varchar(32)                         | YES  | UNI | NULL    |       |
+| location    | varchar(32)                         | YES  |     | NULL    |       |
+| certificate | set('WEB Dev','Testing','Java Dev') | YES  |     | NULL    |       |
++-------------+-------------------------------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> drop table students;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_mysqldbs |
++--------------------+
+| bonus              |
+| employee           |
+| registration       |
+| status             |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> create table students(sid int primary key not null,name varchar(32) not null,gender enum('m','f') not null,DOB date not null,mobile varchar(10) not null unique,location varchar(32),certificates set("Web Dev","Testing","Java Dev"));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_mysqldbs |
++--------------------+
+| bonus              |
+| employee           |
+| registration       |
+| status             |
+| students           |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> describe students;
++--------------+-------------------------------------+------+-----+---------+-------+
+| Field        | Type                                | Null | Key | Default | Extra |
++--------------+-------------------------------------+------+-----+---------+-------+
+| sid          | int                                 | NO   | PRI | NULL    |       |
+| name         | varchar(32)                         | NO   |     | NULL    |       |
+| gender       | enum('m','f')                       | NO   |     | NULL    |       |
+| DOB          | date                                | NO   |     | NULL    |       |
+| mobile       | varchar(10)                         | NO   | UNI | NULL    |       |
+| location     | varchar(32)                         | YES  |     | NULL    |       |
+| certificates | set('Web Dev','Testing','Java Dev') | YES  |     | NULL    |       |
++--------------+-------------------------------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> insert into students values(1,'Raj','M','2002-02-13','89364763','BTM',('web Dev'));
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from students;
++-----+------+--------+------------+----------+----------+--------------+
+| sid | name | gender | DOB        | mobile   | location | certificates |
++-----+------+--------+------------+----------+----------+--------------+
+|   1 | Raj  | m      | 2002-02-13 | 89364763 | BTM      | Web Dev      |
++-----+------+--------+------------+----------+----------+--------------+
+1 row in set (0.00 sec)
+
+mysql> insert into students values(2,'Raj','M','2002-02-13','89364764','BTM',('web Dev,Java Dev'));
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from students;
++-----+------+--------+------------+----------+----------+------------------+
+| sid | name | gender | DOB        | mobile   | location | certificates     |
++-----+------+--------+------------+----------+----------+------------------+
+|   1 | Raj  | m      | 2002-02-13 | 89364763 | BTM      | Web Dev          |
+|   2 | Raj  | m      | 2002-02-13 | 89364764 | BTM      | Web Dev,Java Dev |
++-----+------+--------+------------+----------+----------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into students values(4,'Raj','M',"2019-09-24",'89344764','BTM',('web Dev,Java Dev'));
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from students;
++-----+------+--------+------------+----------+----------+------------------+
+| sid | name | gender | DOB        | mobile   | location | certificates     |
++-----+------+--------+------------+----------+----------+------------------+
+|   1 | Raj  | m      | 2002-02-13 | 89364763 | BTM      | Web Dev          |
+|   2 | Raj  | m      | 2002-02-13 | 89364764 | BTM      | Web Dev,Java Dev |
+|   4 | Raj  | m      | 2019-09-24 | 89344764 | BTM      | Web Dev,Java Dev |
++-----+------+--------+------------+----------+----------+------------------+
+3 rows in set (0.00 sec)
+
+mysql>
